@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <thread>
 #include <chrono>
+#include <vector>
 
 namespace fs = std::filesystem;
 using namespace std::this_thread;
@@ -35,12 +36,12 @@ void saveMenu()
   // idea is to just use basic file i/o for saving and loading saves.  
 
   int existing = 0; int saveChoice; std::fstream myfile; std::string yesNo;
-  std::string save = "Save "; char dir[] = "./saves"; 
-  char* fileNames[3] = {(char *)"./saves/save1.txt", (char *)"./saves/save2.txt", (char *)"./saves/save3.txt"};
-  std::string saveDisplay[3];  
+  std::string save = "Save "; std::vector<const char*> dir{"./saves"}; 
+  std::vector<const char*> fileNames{"./saves/save1.txt", "./saves/save2.txt", "./saves/save3.txt"};
+  std::vector<std::string> saveDisplay{" ", " ", " "};  
   struct stat sb;
 
-  if (stat(dir, &sb) == 0) 
+  if (stat(dir[0], &sb) == 0) 
   {
     for (int i = 1; i <= 3; i++) 
     {
