@@ -1,3 +1,5 @@
+// created by coolius 2024. RPG Game V2 (name tbd)
+
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
@@ -12,19 +14,19 @@ namespace fs = std::filesystem;
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
-void menu();
-void clear();
-void saveMenu();
+void flush() {
+  fflush(stdout);
+}
 
-int main() 
+void clear() 
 {
-  clear();
-  std::cout << "Welcome to the (TBD) RPG! v0.02\n\n";
-  std::cout << "This is just a slight project I felt like developing... don't expect it to go anywhere.\n\n";
-  std::cout << "PRESS ENTER TO START\n\n";
-  std::cin.get();
-  menu();
-  return 0;
+  #if defined(WIN32) && !defined(__linux__)
+    system("cls");
+  #elif defined(__linux__) && !defined(WIN32)
+    system("clear");
+  #else
+    std::cout << "Why are you running this on MacOS...? \n\n";
+  #endif
 }
 
 void menu() 
@@ -70,17 +72,6 @@ void menu()
       while (std::cin.get() != '\n');
     }
   }
-}
-
-void clear() 
-{
-  #if defined(WIN32) && !defined(__linux__)
-    system("cls");
-  #elif defined(__linux__) && !defined(WIN32)
-    system("clear");
-  #else
-    std::cout << "Why are you running this on MacOS...? \n\n";
-  #endif
 }
 
 void saveMenu() 
@@ -145,7 +136,7 @@ void saveMenu()
           {
             // verify save isn't empty, load save, start game.
             clear();
-            std::cout << "Loaded save 1."; fflush(stdout);
+            std::cout << "Loaded save 1."; flush();
             sleep_for(1s);
             clear();
             return;
@@ -153,7 +144,7 @@ void saveMenu()
           else 
           {
             clear();
-            std::cout << "Did not load save 1. Returning to menu..."; fflush(stdout);
+            std::cout << "Did not load save 1. Returning to menu..."; flush();
             sleep_for(1s);
             clear();
             return;
@@ -167,14 +158,14 @@ void saveMenu()
           {
             // verify save isn't empty, load save, start game.
             clear();
-            std::cout << "Loaded save 2."; fflush(stdout);
+            std::cout << "Loaded save 2."; flush();
             sleep_for(1s);
             clear();
             return;
           }
           else {
             clear();
-            std::cout << "Did not load save 2. Returning to menu..."; fflush(stdout);
+            std::cout << "Did not load save 2. Returning to menu..."; flush();
             sleep_for(1s);
             clear();
             return;
@@ -188,7 +179,7 @@ void saveMenu()
           {
             // verify save isn't empty, load save, start game.
             clear();
-            std::cout << "Loaded save 3."; fflush(stdout);
+            std::cout << "Loaded save 3."; flush();
             sleep_for(1s);
             clear();
             return;
@@ -196,7 +187,7 @@ void saveMenu()
           else 
           {
             clear();
-            std::cout << "Did not load save 3. Returning to menu..."; fflush(stdout);
+            std::cout << "Did not load save 3. Returning to menu..."; flush();
             sleep_for(1s);
             clear();
             return;
@@ -204,7 +195,7 @@ void saveMenu()
 
         case 4:
           clear();
-          std::cout << "Exiting save menu..."; fflush(stdout);
+          std::cout << "Exiting save menu..."; flush();
           sleep_for(1s);
           clear();
           return;
@@ -224,4 +215,15 @@ void saveMenu()
     std::cout << "Save folder does not exist. Creating saves folder...\n\n";
     fs::create_directory("saves");
   }
+}
+
+int main() 
+{
+  clear();
+  std::cout << "Welcome to the (TBD) RPG! v0.02\n\n";
+  std::cout << "This is just a slight project I felt like developing... don't expect it to go anywhere.\n\n";
+  std::cout << "PRESS ENTER TO START\n\n";
+  std::cin.get();
+  menu();
+  return 0;
 }
