@@ -1,6 +1,8 @@
 .vscode/settings.json
 .vscode/tasks.json
 .vscode/launch.json
+Makefile
+bin
 saves
 a.out
 RPGGame
