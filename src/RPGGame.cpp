@@ -3,9 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
-#include <vector>
 #include <string>
-#include <cstring>
 #include <filesystem>
 #include <thread>
 #include <chrono>
@@ -38,7 +36,7 @@ void saveMenu()
 
   int existing = 0; int saveChoice; std::fstream myfile; std::string yesNo;
   std::string save = "Save "; char dir[] = "./saves"; 
-  char* fileNames[3] = {"./saves/save1.txt", "./saves/save2.txt", "./saves/save3.txt"};
+  char* fileNames[3] = {(char *)"./saves/save1.txt", (char *)"./saves/save2.txt", (char *)"./saves/save3.txt"};
   std::string saveDisplay[3];  
   struct stat sb;
 
@@ -60,25 +58,26 @@ void saveMenu()
         save = "Save ";
       }
     }
-
-    if (existing == 0) 
-    {
-      sleep_for(0.3s);
-      std::cout << "No saves exist. Please select \"New Game\" in the main menu to begin a new save file.\n\n";
-      return;
-    }
-    else 
-    {
-      sleep_for(0.3s);
-      for (auto string : saveDisplay) 
-      {
-        std::cout << string;
-      }
-      std::cout << "\n";
-    }
     
     while (true) 
     {
+      if (existing == 0) 
+      {
+        sleep_for(0.3s);
+        std::cout << "No saves exist. Please select \"New Game\" in the main menu to begin a new save file.\n\n";
+        return;
+      }
+      else 
+      {
+        sleep_for(0.3s);
+        clear();
+        for (auto string : saveDisplay) 
+        {
+          std::cout << string;
+        }
+        std::cout << "\n";
+      }
+
       std::cout << "Select a save or enter 4 to exit: ";
       std::cin >> saveChoice;
       switch (saveChoice) 
@@ -99,11 +98,11 @@ void saveMenu()
           else 
           {
             clear();
-            std::cout << "Did not load save 1. Returning to menu..."; flush();
+            std::cout << "Did not load save 1. Returning to save selection..."; flush();
             sleep_for(1s);
             clear();
-            return;
           }
+          break;
 
         case 2:
           std::cout << "\n\nSave 2 Selected.";
@@ -120,11 +119,11 @@ void saveMenu()
           }
           else {
             clear();
-            std::cout << "Did not load save 2. Returning to menu..."; flush();
+            std::cout << "Did not load save 2. Returning to save selection..."; flush();
             sleep_for(1s);
             clear();
-            return;
           }
+          break;
 
         case 3:
           std::cout << "\n\nSave 3 Selected.";
@@ -142,11 +141,11 @@ void saveMenu()
           else 
           {
             clear();
-            std::cout << "Did not load save 3. Returning to menu..."; flush();
+            std::cout << "Did not load save 3. Returning to save selection..."; flush();
             sleep_for(1s);
             clear();
-            return;
           }
+          break;
 
         case 4:
           clear();
@@ -168,6 +167,7 @@ void saveMenu()
   {
     clear();
     std::cout << "Save folder does not exist. Creating saves folder...\n\n";
+    sleep_for(0.3s);
     fs::create_directory("saves");
   }
 }
@@ -200,6 +200,7 @@ void menu()
           clear();
           std::cout << "Quitting game... thank you for playing!\n\n(Press any key to exit...)";
           sleep_for(1s);
+          std::cin.ignore(); std::cin.ignore();
           return;
         default:
           clear();
