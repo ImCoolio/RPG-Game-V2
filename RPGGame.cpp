@@ -29,51 +29,6 @@ void clear()
   #endif
 }
 
-void menu() 
-{
-  int x;
-  clear();
-  while (true) 
-  {
-    std::cout << "1 - New Game\n2 - Load Save\n3 - Options\n4 - Quit\n\nSelection: ";
-    if (std::cin >> x) 
-    {
-      switch (x) 
-      {
-        case 1:
-          clear(); 
-          std::cout << "New game test.\n\n";
-          break;
-        case 2:
-          clear();
-          std::cout << "Loading saves...\n\n";
-          saveMenu();
-          break;
-        case 3:
-          clear();
-          std::cout << "Options test.\n\n";
-          break;
-        case 4:
-          clear();
-          std::cout << "Quitting game... thank you for playing!\n\n(Press any key to exit...)";
-          sleep_for(1s);
-          return;
-        default:
-          clear();
-          std::cout << "Invalid input. Please retry.\n\n";
-          break;
-      }
-    } 
-    else 
-    {
-      clear();
-      std::cout << "Invalid input, be sure you are inputting an integer.\n\n";
-      std::cin.clear();
-      while (std::cin.get() != '\n');
-    }
-  }
-}
-
 void saveMenu() 
 {
   // check if any save files exist, go through each 1-3 likely name "save1.txt"
@@ -214,6 +169,51 @@ void saveMenu()
     clear();
     std::cout << "Save folder does not exist. Creating saves folder...\n\n";
     fs::create_directory("saves");
+  }
+}
+
+void menu() 
+{
+  int x;
+  clear();
+  while (true) 
+  {
+    std::cout << "1 - New Game\n2 - Load Save\n3 - Options\n4 - Quit\n\nSelection: ";
+    if (std::cin >> x) 
+    {
+      switch (x) 
+      {
+        case 1:
+          clear(); 
+          std::cout << "New game test.\n\n";
+          break;
+        case 2:
+          clear();
+          std::cout << "Loading saves...\n\n";
+          saveMenu();
+          break;
+        case 3:
+          clear();
+          std::cout << "Options test.\n\n";
+          break;
+        case 4:
+          clear();
+          std::cout << "Quitting game... thank you for playing!\n\n(Press any key to exit...)";
+          sleep_for(1s);
+          return;
+        default:
+          clear();
+          std::cout << "Invalid input. Please retry.\n\n";
+          break;
+      }
+    } 
+    else 
+    {
+      clear();
+      std::cout << "Invalid input, be sure you are inputting an integer.\n\n";
+      std::cin.clear();
+      while (std::cin.get() != '\n');
+    }
   }
 }
 
