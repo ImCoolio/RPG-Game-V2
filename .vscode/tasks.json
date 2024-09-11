@@ -1,0 +1,10 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Makefile Debugging",
+            "command": "make debug-gdb"
+        }
+    ],
+    "version": "2.0.0"
+}

@@ -1,0 +1,11 @@
+{
+    "C_Cpp.default.compilerPath": "/g++",
+    "makefile.makefilePath": "./Makefile",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/coolius/RPG-Game-V2/bin/debug-gdb",
+            "binaryPath": "/home/coolius/RPG-Game-V2/bin/debug-gdb/game",
+            "binaryArgs": []
+        }
+    ]
+}
