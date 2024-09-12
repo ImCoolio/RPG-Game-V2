@@ -13,7 +13,8 @@ namespace fs = std::filesystem;
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
-void flush() {
+void flush() 
+{
   fflush(stdout);
 }
 
