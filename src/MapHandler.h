@@ -3,8 +3,8 @@
 #include <vector>
 
 namespace mapHand {
-    extern std::vector<int> map;
-    void generation(int size);   
+    extern std::vector<std::string> map;
+    std::vector<std::string> generation(int n, int save);   
 }
 
 #endif
