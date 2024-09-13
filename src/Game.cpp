@@ -12,7 +12,7 @@ int main()
   clear();
   std::cout << "Welcome to the (TBD) RPG! v0.02\n\n";
   std::cout << "This is just a slight project I felt like developing... don't expect it to go anywhere.\n\n";
-  std::cout << "PRESS ENTER TO START\n\n";
+  std::cout << "Press ENTER to start\n\n";
   std::cin.get();
   menu();
   return 0;

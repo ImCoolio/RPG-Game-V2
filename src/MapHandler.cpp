@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 #include "MapHandler.h"
 #include "General.h"
 
@@ -16,14 +18,13 @@ namespace mapHand {
         // To find the y, divide the current index by n and round down the float.
 
         // At first, I'll just program the actual generation with generic locations, disregarding special locations. 
-
-        for (int i; i < n*n; i++) {
-            map.push_back(0);
-            std::cout << "Loading " << (i/n) << "%...";
+        for (int i = 100; i < n*n; i++) {
+            map.push_back(i);
+            double percent = (i/(n*n));
+            std::cout << "Generating world: " << std::setprecision (4) << percent << "%\n";
         }
 
-        gen::clear();
-        std::cout << "Success! No errors.";
+        std::cout << "\n\nSuccess! No errors.\n\n";
     }
 }
 

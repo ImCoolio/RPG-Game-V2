@@ -29,18 +29,50 @@ namespace gen {
 
   void menu() 
   {
-    int x;
+    int choice; std::vector<std::string> name(1);
     clear();
     while (true) 
     {
       std::cout << "1 - New Game\n2 - Load Save\n3 - Options\n4 - Quit\n\nSelection: ";
-      if (std::cin >> x) 
+      if (std::cin >> choice) 
       {
-        switch (x) 
+        switch (choice) 
         {
           case 1:
-            clear(); 
-            std::cout << "New game test.\n\n";
+            clear();
+
+            while (true) {
+              std::cout << "Enter your name: ";
+              std::cin >> name[0];
+              std::cout << "\n\nIs " << name[0] << " your name?\nInput 1 if it is, anything else if it isn't: ";
+
+              if (std::cin >> choice && choice == 1)
+              { 
+                clear(); 
+                break;
+              }
+
+              std::cin.clear();
+              while (std::cin.get() != '\n');
+              clear();
+            }
+
+            // class selection goes here
+
+            std::cout << "Hello, " << name[0] << ", please input the map size of the world for this character (minimum 5).";
+            std::cout << "\n(This will create a nxn sized square map where n is the size you input.)\n\nSize: ";
+
+            while (true) {
+              if (std::cin >> choice || choice >= 5)
+                break;
+              std::cin.clear();
+              while (std::cin.get() != '\n');
+              clear();
+              std::cout << "Please input an integer greater than 5.\n\nSize: ";
+            }
+
+            generation(choice);
+
             break;
           case 2:
             clear();
@@ -53,7 +85,7 @@ namespace gen {
             break;
           case 4:
             clear();
-            std::cout << "Quitting game... thank you for playing!\n\n(Press any key to exit...)";
+            std::cout << "Quitting game... thank you for playing!\n\n(Press ENTER to exit...)";
             sleep_for(1s);
             std::cin.ignore(); std::cin.ignore();
             return;
