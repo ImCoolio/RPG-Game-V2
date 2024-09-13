@@ -2,10 +2,12 @@
 #include <thread>
 #include <chrono>
 #include <string>
+#include <filesystem>
 #include "General.h"
 #include "SaveHandler.h"
 #include "MapHandler.h"
 
+namespace fs = std::filesystem;
 using namespace saveHand;
 using namespace mapHand;
 using namespace std::this_thread;
@@ -88,6 +90,7 @@ namespace gen {
               if (std::cin >> save && save >= 1 && save <= 3)
               { 
                 clear();
+                if (!fs::exists("./saves")) fs::create_directory("./saves");
                 std::vector<std::string> map = generation(choice, save);
                 break;
               }
