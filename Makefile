@@ -1,5 +1,5 @@
 CC 				:= g++
-CFLAGS 	 		:= -std=c++20 -Werror -Wall -Wextra -Wshadow -Wno-unused -Wno-uninitialized
+CFLAGS 	 		:= -std=c++20 -Wall -Wextra -Wshadow -Wno-unused -Wno-uninitialized
 CPPFLAGS 		:= -MMD -MP
 LDLIBS 	 		:=
 LDFLAGS 		:= 
@@ -11,13 +11,13 @@ REL_LDLIBS 		:=
 REL_LDFLAGS 	:=
 REL_INCLUDES 	:=
 
-DBG_CFLAGS 		:= -O0 -g -fsanitize=undefined,address -fno-omit-frame-pointer
+DBG_CFLAGS 		:= -O0 -g -Werror -fsanitize=undefined,address -fno-omit-frame-pointer
 DBG_CPPFLAGS 	:= -DDEBUG
 DBG_LDLIBS 		:= 
 DBG_LDFLAGS 	:= -fsanitize=undefined,address -fno-omit-frame-pointer
 DBG_INCLUDES 	:=
 
-GDB_CFLAGS 		:= -O0 -g -fno-omit-frame-pointer
+GDB_CFLAGS 		:= -O0 -g -Werror -fno-omit-frame-pointer
 GDB_LDFLAGS 	:= -fno-omit-frame-pointer
 
 BIN 			:= game
