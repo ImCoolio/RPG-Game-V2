@@ -6,7 +6,7 @@
 #include <cstdint>
 #include "MapHandler.h"
 #include "General.h"
-#include "Random.h"
+#include "RandomHandler.h"
 
 using namespace gen;
 
