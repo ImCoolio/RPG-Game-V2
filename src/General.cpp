@@ -91,7 +91,7 @@ namespace gen {
               { 
                 clear();
                 if (!fs::exists("./saves")) fs::create_directory("./saves");
-                std::vector<std::string> map = generation(choice, save);
+                std::vector<uint8_t> map = generation(choice, save);
                 break;
               }
               else if (choice == 4) {
