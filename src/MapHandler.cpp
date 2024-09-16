@@ -1,7 +1,5 @@
 #include <iostream>
 #include <iomanip>
-#include <iterator>
-#include <algorithm>
 #include <fstream>
 #include <cstdint>
 #include "MapHandler.h"
