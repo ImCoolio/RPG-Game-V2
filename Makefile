@@ -113,3 +113,4 @@ clean:
 
 -include $(DBG_DEPS)
 -include $(REL_DEPS)
+-include $(GDB_DEPS)
